@@ -1,0 +1,84 @@
+{
+    "buttons":[
+        {
+            "icon":"brent.xpm",
+            "annotation":"Print an inspirational quote from Brent to the command line.",
+            "python_file":"brent.py"
+        },
+        {
+            "icon":"checkout.xpm",
+            "annotation":"Checkout a model, rig, or animation.",
+            "python_file":"maya_checkout.py"
+        },
+        {
+            "icon":"checkin.xpm",
+            "annotation":"Checkin the current file",
+            "python_file":"maya_checkin.py"
+        },
+        {
+            "icon":"savebutton.xpm",
+            "annotation":"Version up the current file",
+            "python_file":"maya_save_version.py"
+        },
+        {
+            "icon":"Trash.xpm",
+            "annotation":"Discard changes and release asset",
+            "python_file":"maya_discard.py"
+        },
+        {
+            "icon":"roll.xpm",
+            "annotation":"Roll back to an older version",
+            "python_file":"maya_rollback.py"
+        },
+        {
+            "icon":"bug.xpm",
+            "annotation":"Open a webpage with a form to submit issues regarding pipeline and tools",
+            "python_file":"maya_issue_submit.py"
+        },
+        {
+            "icon":"alembic_tagger.xpm",
+            "annotation":"Tag objects for Alembic export.",
+            "python_file":"alembic_tagger.py"
+        },
+        {
+            "icon":"alembic_untagger.xpm",
+            "annotation":"Remove Alembic export tags from objects.",
+            "python_file":"alembic_untagger.py"
+        },
+        {
+            "icon":"list_alembic_tags.xpm",
+            "annotation":"List all the objects with alembic tags in the scene.",
+            "python_file":"list_alembic_tags.py"
+        },
+        {
+            "icon":"alembic_exporter.xpm",
+            "annotation":"Export loaded references to alembic",
+            "python_file":"alembic_exporter.py"
+        },
+        {
+            "icon":"cam.xpm",
+            "annotation":"Make a playblast of your previs or animation file.",
+            "python_file":"maya_playblast.py"
+        },
+        {
+		"icon":"garrett.xpm",
+		"annotation":"Submit an asset issue.",
+		"python_file":"maya_issue_form.py"
+        },
+        {
+            "icon":"delete.xpm",
+            "annotation":"Rename or Delete shots or Copy animation to previs",
+            "python_file":"maya_edit_shot.py"
+        },
+		{
+		        "icon":"AndrePickerImage.xpm",
+		        "annotation":"Andre Control Picker",
+		        "python_file":"andre_gui.py"
+		},
+		{
+		        "icon":"studio_library.xpm",
+		        "annotation":"Studio Library",
+		        "python_file":"studio_library.py"
+		}
+    ]
+}

@@ -1,0 +1,27 @@
+
+from PyQt4.QtCore import *
+from PyQt4.QtGui import *
+
+import maya.cmds as cmds
+import maya.OpenMayaUI as omu
+import sip
+import os, glob
+import shutil
+import utilities as amu #asset manager utilities
+
+def showWarningDialog(): 
+        return cmds.confirmDialog( title         = 'Delete Confirmation' 
+                                 , message       = 'THIS BUTTON IS UNDER CONSTRUCTION'
+                                                   'Please think this through very carefully.\r\n\r\n '
+                                                   'Are you sure you want to discard your changes?'
+                                 , button        = ['Yes', 'No']
+                                 , defaultButton = 'No'
+                                 , cancelButton  = 'No'
+                                 , dismissString = 'No')
+
+def discard():
+        dlgResult = showWarningDialog()
+                                   
+def go():
+        discard()
+

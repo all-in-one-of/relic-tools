@@ -1,0 +1,29 @@
+{
+    "buttons":[
+        {
+            "icon":"checkout.xpm",
+            "annotation":"Checkout a model, rig, or animation.",
+            "python_file":"maya_checkout.py"
+        },
+        {
+            "icon":"checkin.xpm",
+            "annotation":"Checkin the current file",
+            "python_file":"maya_checkin.py"
+        },
+        {
+            "icon":"Trash.xpm",
+            "annotation":"Discard changes and release asset",
+            "python_file":"maya_discard.py"
+        },
+        {
+            "icon":"roll.xpm",
+            "annotation":"Roll back to an older version",
+            "python_file":"maya_rollback.py"
+        },
+        {
+            "icon":"fbx_export.xpm",
+            "annotation":"Export to FBX file",
+            "python_file":"alembic_exporter.py"
+        }
+    ]
+}

@@ -1,0 +1,55 @@
+import maya.cmds as cmds
+import utilities as amu #asset manager utilities
+import brent
+import os
+
+def showWarningDialog(): 
+        return cmds.confirmDialog( title         = 'Rename Confirmation' 
+                                 , message       = 'THIS BUTTON IS UNDER CONSTRUCTION'
+                                 , button        = ['Yes', 'No']
+                                 , defaultButton = 'No'
+                                 , cancelButton  = 'No'
+                                 , dismissString = 'No')
+
+def discard():
+        dlgResult = showWarningDialog()
+
+def go():
+        discard()
+
+"""
+	def checkout(self):
+		curfilepath = cmd.file(query=True, sceneName=True)
+		if not curfilepath == '':
+			cmd.file(save=True, force=True)
+
+		toCheckout = self.get_asset_path()
+
+		try:
+			destpath = amu.checkout(toCheckout, True)
+		except Exception as e:
+			print str(e)
+			if not amu.checkedOutByMe(toCheckout):
+				cmd.confirmDialog(  title          = 'Can Not Checkout'
+                                   , message       = str(e)
+                                   , button        = ['Ok']
+                                   , defaultButton = 'Ok'
+                                   , cancelButton  = 'Ok'
+                                   , dismissString = 'Ok')
+				return
+			else:
+				destpath = amu.getCheckoutDest(toCheckout)
+
+		toOpen = os.path.join(destpath, self.get_filename(toCheckout)+'.mb')
+		
+		# open the file
+		if os.path.exists(toOpen):
+			cmd.file(toOpen, force=True, open=True)#, loadReferenceDepth="none")
+		else:
+			# create new file
+			cmd.file(force=True, new=True)
+			cmd.file(rename=toOpen)
+			cmd.viewClipPlane('perspShape', ncp=0.01)
+			cmd.file(save=True, force=True)
+		self.close_dialog()
+"""
