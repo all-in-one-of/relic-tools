@@ -14,6 +14,8 @@ def getUsername():
 	return os.environ['USER']
 def getUserCheckoutDir():
 	return os.path.join(os.environ['USER_DIR'], 'checkout')
+def getRepoAssetDir():
+	return os.path.join(os.environ['REPO_DIR'], 'Assets')
 
 def getHoudiniPython():
 	"""precondition: HFS environment variable is set correctly"""

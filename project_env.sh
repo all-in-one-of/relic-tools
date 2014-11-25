@@ -45,6 +45,9 @@ export USER_DIR=${JOB}/users/${USER}
 # Root directory for assets
 export ASSETS_DIR=${JOB}/assets
 
+# Repo directory with the code for the main game
+export REPO_DIR=${JOB}/tombgameugly/GraveRobberUnityProject
+
 # Append to python path so batch scripts can access our modules
 export PYTHONPATH=$PYTHONPATH:/usr/autodesk/maya2014-x64/lib/python2.7/site-packages:/usr/lib64/python2.6/site-packages:/usr/lib64/python2.7/site-packages:${PROJECT_TOOLS}:${PROJECT_TOOLS}/asset_manager:${PYTHONPATH}
 

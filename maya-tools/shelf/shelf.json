@@ -23,7 +23,7 @@
         {
             "icon":"fbx_export.xpm",
             "annotation":"Export to FBX file",
-            "python_file":"alembic_exporter.py"
+            "python_file":"fbx_export.py"
         }
     ]
 }
