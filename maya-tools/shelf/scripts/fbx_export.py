@@ -9,7 +9,7 @@ import os
 import sip
 
 WINDOW_WIDTH = 250
-WINDOW_HEIGHT = 50
+WINDOW_HEIGHT = 120
 
 def maya_main_window():
 	ptr = omu.MQtUtil.mainWindow()
@@ -17,7 +17,6 @@ def maya_main_window():
 
 class FbxExportDialog(QDialog):
 	def __init__(self, parent=maya_main_window()):
-	#def setup(self, parent):
 		QDialog.__init__(self, parent)
 		self.saveFile()
 		self.setWindowTitle('Select Export Type')
@@ -27,24 +26,27 @@ class FbxExportDialog(QDialog):
 	
 	def create_layout(self):
 		#Create Export Alembic and Cancel buttons
-		self.static_button = QPushButton('Static Object')
-		self.dynamic_button = QPushButton('Dynamic Object')
+		self.static_button = QPushButton('Static Environment')
+		self.dynamic_button = QPushButton('Dynamic Environment')
+		self.monster_button = QPushButton('Monster')
+		self.player_button = QPushButton('Player')
 		self.cancel_button = QPushButton('Cancel')
 		
 		#Create button layout
-		button_layout = QHBoxLayout()
+		button_layout = QVBoxLayout()
 		button_layout.setSpacing(2)
 		button_layout.addStretch()
 	
 		button_layout.addWidget(self.static_button)
 		button_layout.addWidget(self.dynamic_button)
+		button_layout.addWidget(self.monster_button)
+		button_layout.addWidget(self.player_button)
 		button_layout.addWidget(self.cancel_button)
 		
 		#Create main layout
 		main_layout = QVBoxLayout()
 		main_layout.setSpacing(2)
 		main_layout.setMargin(2)
-		#main_layout.addWidget(self.selection_list)
 		main_layout.addLayout(button_layout)
 		
 		self.setLayout(main_layout)
@@ -53,6 +55,8 @@ class FbxExportDialog(QDialog):
 		#Connect the buttons
 		self.connect(self.static_button, SIGNAL('clicked()'), self.export_static)
 		self.connect(self.dynamic_button, SIGNAL('clicked()'), self.export_dynamic)
+		self.connect(self.monster_button, SIGNAL('clicked()'), self.export_monster)
+		self.connect(self.player_button, SIGNAL('clicked()'), self.export_player)
 		self.connect(self.cancel_button, SIGNAL('clicked()'), self.close_dialog)
 	
 	
@@ -60,22 +64,22 @@ class FbxExportDialog(QDialog):
 	# SLOTS
 	########################################################################
 	def export_static(self):
-		self.saveFile()
-
-		loadPlugin("fbxmaya")
-		exportFilePath = self.build_export_filepath("Static")
-		print exportFilePath
-		command = self.build_export_command(exportFilePath)
-		print command
-		Mel.eval(command)
-
-		self.close_dialog()
+		self.export_obj("Static", True)
 
 	def export_dynamic(self):
+		self.export_obj("Dynamic", True)
+
+	def export_monster(self):
+		self.export_obj("Monsters", False)
+
+	def export_player(self):
+		self.export_obj("Player", False)
+
+	def export_obj(self, objType, isEnviron):
 		self.saveFile()
 
 		loadPlugin("fbxmaya")
-		exportFilePath = self.build_export_filepath("Dynamic")
+		exportFilePath = self.build_export_filepath(objType, isEnviron)
 		print exportFilePath
 		command = self.build_export_command(exportFilePath)
 		print command
@@ -87,10 +91,13 @@ class FbxExportDialog(QDialog):
 		if not cmds.file(q=True, sceneName=True) == '':
 			cmds.file(save=True, force=True) #save file
 	
-	def build_export_filepath(self, exportType):
+	def build_export_filepath(self, exportType, isEnviron):
 		#Get Repo Directory
 		filePath = cmds.file(q=True, sceneName=True)
-		destDir = os.path.join(amu.getRepoAssetDir(), 'Environment', exportType, 'Meshes')
+		if(isEnviron):
+			destDir = os.path.join(amu.getRepoAssetDir(), 'Environment', exportType, 'Meshes')
+		else:
+			destDir = os.path.join(amu.getRepoAssetDir(), exportType, 'Meshes')
 
 		#Get Asset Name
 		assetName = os.path.basename(filePath).split('.')[0]
