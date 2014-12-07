@@ -106,7 +106,7 @@ class FbxExportDialog(QDialog):
 		return os.path.join(destDir, assetName+'.fbx')
 
 	def build_export_command(self, exportFilePath):
-		command = 'file -force -options "v=0;" -type "FBX export" -pr -ea "%s"'%(exportFilePath)
+		command = 'file -force -options "" -type "FBX export" -pr -es "%s"'%(exportFilePath)
 		return command
 	
 	def close_dialog(self):
